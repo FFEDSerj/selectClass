@@ -45,6 +45,16 @@ main {
   padding: 5px 10px;
   border: 1px solid #08b69c;
   border-radius: 4px;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.select__text {
+  color: rgb(216, 216, 216);
+}
+
+.select__input.picked .select__text {
+  color: #000;
 }
 
 .select__input::before {
@@ -57,8 +67,12 @@ main {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid #000;
+  border-top: 10px solid rgb(216, 216, 216);
   transition: transform 0.3s ease 0s;
+}
+
+.select__input.picked::before {
+  border-top-color: #000;
 }
 
 .select.open .select__input::before {
@@ -81,6 +95,8 @@ main {
   transition-property: opacity, visibility;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
+  z-index: 100;
+  background-color: #fff;
 }
 
 .select.open .select__dropdown {
@@ -99,6 +115,24 @@ main {
   transition: all 0.3s ease 0s;
 }
 
+.select__item.selected {
+  background-color: rgb(141, 122, 13);
+}
+
 .select__item:hover {
   background-color: #eee;
+}
+
+.select__backdrop {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease 0s;
+}
+
+.select.open .select__backdrop {
+  visibility: visible;
+  opacity: 1;
 }
