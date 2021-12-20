@@ -5,13 +5,6 @@ class Select {
     this.selector = selector;
     this.selectedId = props.selectedId;
     this.keyboard = props.keyboard;
-    this.keyCodes = {
-      "Escape": "Escape",
-      "Enter": "Enter",
-      "ArrowUp": "ArrowUp",
-      "ArrowDown": "ArrowDown",
-      " ": "Space"
-    };
     this.search = {
       debounce: null,
       term: ''
@@ -54,7 +47,6 @@ class Select {
   keyBoardHandler = e => this.useActionOnParticularKey(e.key);
 
   useActionOnParticularKey(key) {
-    // const input = document.getElementById('keyboardInput');
     const len = Object.keys(this.formattedOptions).length;
     switch (key) {
       case " ":
@@ -81,11 +73,6 @@ class Select {
       default:
         clearTimeout(this.search.debounce);
         this.search.term += key;
-        // input.textContent += key;
-        // this.search.debounce = setTimeout(() => {
-        //   this.search.term = '';
-        //   input.textContent = '';
-        // }, 500);
         this.search.debounce = setTimeout(() => this.search.term = '', 500);
 
         const searchedOption = Object.entries(this.formattedOptions).find(([key, option]) => {
